@@ -75,6 +75,9 @@ const mainFunc = () => {
   <button class="my-1" id="calculate">Calculate</button>
   <button class="my-1 mx-2" id="clear">Clear</button>
   </div>
+  <div class="row row d-flex justify-content-center" >
+  <button class="my-1 mx-2" id="back" onclick="location.reload()">Back</button>
+  </div>
   `;
   add = document.getElementById("add");
   calculate = document.getElementById("calculate");

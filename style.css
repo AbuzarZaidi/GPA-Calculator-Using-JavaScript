@@ -31,6 +31,17 @@
   background: rgb(53, 37, 31);
   color: cornsilk;
 }
+#back {
+  width: 30%;
+  background: rgb(37, 30, 134);
+  border-radius: 2rem;
+  color: #fff;
+}
+#back:hover {
+  width: 34%;
+  background: rgb(47, 37, 73);
+  color: cornsilk;
+}
 .red {
   color: red;
 }
