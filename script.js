@@ -18,7 +18,8 @@ let add = "";
 let count = 1;
 let totalCredits=0;
 let gradePoint=0;
-gpa.addEventListener("click", (e) => {
+// gpa.addEventListener("click", (e) => {
+  const mainFunc=()=>{
   document.getElementById("mainDiv").innerHTML = ` 
     <h1>GPA Calculator</h1>
     <div class="container" id="container">
@@ -64,7 +65,6 @@ gpa.addEventListener("click", (e) => {
           
         </select>
     </div>
-
   </div>
   </div>
   <div class="row d-flex justify-content-center"  >
@@ -80,8 +80,8 @@ gpa.addEventListener("click", (e) => {
   clear = document.getElementById("clear");
   addFunc();
   calculateFunc();
-  clear();
-});
+  clearFunc();
+};
 
 const addFunc = () => {
   console.log("click");
@@ -91,6 +91,7 @@ const addFunc = () => {
     let container = document.getElementById("container");
     let div = document.createElement("div");
     div.setAttribute("class", "row mt-3");
+    div.setAttribute("id", "div");
     let div1 = document.createElement("div");
     div1.setAttribute("class", "col-1");
     div1.innerText = `${count}`;
@@ -125,7 +126,6 @@ const addFunc = () => {
       option.text = array[i].text;
       selectList.appendChild(option);
     }
-
     div.appendChild(div1);
     div.appendChild(div2);
     div.appendChild(div3);
@@ -152,11 +152,13 @@ calculate.addEventListener('click',(e)=>{
    show.innerHTML=`<h3> your GPA is : ${totalGPA} </h3> <br> <h4> your Total Credits are : ${totalCredits} </h4>`
 })
 }
-
-
-//clear field
 const clearFunc=()=>{
-   count=1;
+  clear.addEventListener('click',(e)=>{
+    console.log('click');
+    count=1;
+    mainFunc();
+    document.getElementById('show').innerHTML="";
+  })
 
 }
 
