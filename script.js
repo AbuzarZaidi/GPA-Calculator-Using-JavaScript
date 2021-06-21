@@ -13,13 +13,14 @@ let array = [
   { value: "1.00", text: "D" },
   { value: "0.00", text: "F" },
 ];
-let calculate="";
+let calculate = "";
 let add = "";
 let count = 1;
-let totalCredits=0;
-let gradePoint=0;
+let flag = 0;
+let totalCredits = 0;
+let gradePoint = 0;
 // gpa.addEventListener("click", (e) => {
-  const mainFunc=()=>{
+const mainFunc = () => {
   document.getElementById("mainDiv").innerHTML = ` 
     <h1>GPA Calculator</h1>
     <div class="container" id="container">
@@ -116,8 +117,8 @@ const addFunc = () => {
 
     //Create and append select list
     let selectList = document.createElement("select");
-    selectList.setAttribute('class' ,"form-select form-select-sm ");
-    selectList.setAttribute('id' ,`${count}grade`);
+    selectList.setAttribute("class", "form-select form-select-sm ");
+    selectList.setAttribute("id", `${count}grade`);
     div4.appendChild(selectList);
     //Create and append the options
     for (let i = 0; i < array.length; i++) {
@@ -135,38 +136,55 @@ const addFunc = () => {
 };
 
 //calculate
-const calculateFunc=()=>{
-calculate.addEventListener('click',(e)=>{
-    for(let i=1;i<=count;i++)
-    {
-        let credits=document.getElementById(`${i}credits`).value;
-        totalCredits+=parseInt(credits);
-         let grade=document.getElementById(`${i}grade`).value;
-         gradePoint +=(parseFloat(credits)*parseFloat(grade))    
+let credits = "";
+let grade = "";
+const calculateFunc = () => {
+  calculate.addEventListener("click", (e) => {
+    flag = 0;
+    totalCredits = 0;
+    gradePoint = 0;
+    for (let i = 1; i <= count; i++) {
+      credits = document.getElementById(`${i}credits`).value;
+      totalCredits += parseInt(credits);
+      grade = document.getElementById(`${i}grade`).value;
+      gradePoint += parseFloat(credits) * parseFloat(grade);
+      if (credits == "" || grade == "") {
+        flag = 1;
+        showWarning();
+        setTimeout(function () {
+          removeWarning();
+        }, 3500);
+        continue;
+      }
     }
-    let totalGPA= gradePoint/totalCredits;
-    // console.log(totalCredits);
-    // console.log(gradePoint);
-    console.log(totalGPA);
-    let show=document.getElementById('show');
-   show.innerHTML=`<h3> your GPA is : ${totalGPA} </h3> <br> <h4> your Total Credits are : ${totalCredits} </h4>`
-})
-}
-const clearFunc=()=>{
-  clear.addEventListener('click',(e)=>{
-    console.log('click');
-    count=1;
+    if (flag == 0) {
+      let totalGPA = gradePoint / totalCredits;
+
+      console.log(totalGPA);
+      let show = document.getElementById("show");
+      show.innerHTML = `<h3> your GPA is : ${totalGPA} </h3> <br> <h4> your Total Credits are : ${totalCredits} </h4>`;
+    }
+  });
+};
+const clearFunc = () => {
+  clear.addEventListener("click", (e) => {
+    console.log("click");
+    count = 1;
     mainFunc();
-    document.getElementById('show').innerHTML="";
-  })
+    document.getElementById("show").innerHTML = "";
+  });
+};
 
+const showWarning = () => {
+  console.log("show");
+  document.getElementById("container").innerHTML +=
+    "<p  class='red' id='warn'>Please Fill information</p>";
+};
+
+function removeWarning() {
+  let id = document.getElementById("warn");
+  id.remove();
 }
-
-
-
-
-
-
 
 // cgpa.addEventListener('click',(e)=>{
 //     console.log('cgpa');
