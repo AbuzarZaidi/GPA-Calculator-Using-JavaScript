@@ -1,0 +1,33 @@
+#mainDiv{
+    background: #EEE8D5;
+}
+#add{
+    background: #e9e5d8;
+    width: 70%;
+}
+#add:hover{
+    background: #c0b99f;
+}
+
+#calculate{
+    width: 30%;
+    background: rgb(250, 142, 103);
+    border-radius: 2rem;
+    color:#fff;
+}
+#calculate:hover{
+    width: 34%;
+    background: rgb(175, 85, 52);
+    color: cornsilk;
+}
+#clear{
+    width: 30%;
+    background: rgb(131, 93, 80);
+    border-radius: 2rem;
+    color:#fff;
+}
+#clear:hover{
+    width: 34%;
+    background: rgb(53, 37, 31);
+    color: cornsilk;
+}
